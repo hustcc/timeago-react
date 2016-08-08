@@ -1,6 +1,6 @@
 {
   "name": "timeago-react",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "timeago-react is a simple(only 2kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
   "main": "lib/timeago-react.js",
   "scripts": {

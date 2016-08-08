@@ -52,4 +52,4 @@ const TimeAgo = React.createClass({
     );
   }
 });
-export default TimeAgo;
+module.exports = TimeAgo;

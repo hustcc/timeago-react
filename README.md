@@ -17,7 +17,7 @@ npm install timeago-react
 
 ```js
 import React from 'react';
-import TimeAgo from 'timeago-react';
+import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
 <ReactEcharts
   date={'2016-08-08 08:08:08'} 
