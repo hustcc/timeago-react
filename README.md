@@ -19,7 +19,7 @@ npm install timeago-react
 import React from 'react';
 import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
-<ReactEcharts
+<TimeAgo
   date={'2016-08-08 08:08:08'} 
   local='zh_CN' />
 ```
@@ -37,7 +37,7 @@ live render, default is `true`.
 
  - **`className`** (optional, string)
 
-the `class` of echarts div. you can setting the css style of charts by class name.
+the `class` of span. you can setting the css style of span by class name.
 
  - **`local`** (optional, string)
 
