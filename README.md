@@ -43,9 +43,9 @@ live render, default is `true`.
 
 the `class` of span. you can setting the css style of span by class name.
 
- - **`local`** (optional, string)
+ - **`locale`** (optional, string)
 
-the `local` language of statement, default is `en`. `zh_CN` and `en` are supported.
+the `locale` language of statement, default is `en`. `zh_CN` and `en` are supported.
 
 
 # 4. LICENSE

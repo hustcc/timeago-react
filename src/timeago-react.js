@@ -6,7 +6,7 @@ const TimeAgo = React.createClass({
   propTypes: {
     date: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.instanceOf(Date), React.PropTypes.number]).isRequired,  // date to be formated
     live: React.PropTypes.bool,               // real time render.
-    local: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),            // local lang
+    locale: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),            // locale lang
     className: React.PropTypes.string         //  class name
   },
   // first add
@@ -33,7 +33,7 @@ const TimeAgo = React.createClass({
         this.refs.timeagoDom.setAttribute('data-timeago', this.props.date.getTime());
       else 
         this.refs.timeagoDom.setAttribute('data-timeago', this.props.date);
-      this.timeagoInstance.render(this.refs.timeagoDom, this.props.local);
+      this.timeagoInstance.render(this.refs.timeagoDom, this.props.locale);
     }
   },
   // remove
@@ -47,7 +47,7 @@ const TimeAgo = React.createClass({
       <span 
         ref='timeagoDom'
         className={this.props.className || ''}>
-          {this.timeagoInstance.format(this.props.date, this.props.local)}
+          {this.timeagoInstance.format(this.props.date, this.props.locale)}
       </span>
     );
   }
