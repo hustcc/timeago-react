@@ -24,16 +24,16 @@ import React from 'react';
 import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
 <TimeAgo
-  date={'2016-08-08 08:08:08'} 
+  datetime={'2016-08-08 08:08:08'} 
   local='zh_CN' />
 ```
 
 
 # 3. component props
 
- - **`date`** (required, string / Date / timestamp)
+ - **`datetime`** (required, string / Date / timestamp)
 
-the date to be formated. can be `date string`, `Date instance`, or `timestamp`.
+the datetime to be formated. can be `datetime string`, `Date instance`, or `timestamp`.
 
  - **`live`** (optional, boolean)
 

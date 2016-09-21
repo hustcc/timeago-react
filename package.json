@@ -1,6 +1,6 @@
 {
   "name": "timeago-react",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "timeago-react is a simple(only 2kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
   "main": "lib/timeago-react.js",
   "scripts": {
@@ -9,11 +9,12 @@
     "clean": "rimraf lib",
     "test": "npm run lint",
     "build": "npm run clean && cross-env NODE_ENV=production babel src -d lib",
+    "build-demos": "webpack",
     "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
-    "build-demos": "webpack",
+    
     "url": "https://github.com/hustcc/timeago-react.git"
   },
   "keywords": [
@@ -55,7 +56,7 @@
     "babel-plugin-transform-es3-member-expression-literals": "*"
   },
   "dependencies": {
-    "timeago.js": "^1.0.9"
+    "timeago.js": "^2.0.1"
   },
   "peerDependencies": {
     "react": ">=0.13.2 || ^0.14 || ^15.0.0"
