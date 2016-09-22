@@ -26,7 +26,6 @@ import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 <TimeAgo
   datetime={'2016-08-08 08:08:08'} 
   locale='zh_CN' />
->>>>>>> 4d3d824d0cd97f3fae40b9ef4743f54e13d31da1
 ```
 
 
