@@ -14,7 +14,7 @@
 
 # 1. install
 
-> npm install timeago-react
+> **npm install timeago-react**
 
 
 # 2. usage
@@ -33,19 +33,19 @@ import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
  - **`datetime`** (required, string / Date / timestamp)
 
-the datetime to be formated. can be `datetime string`, `Date instance`, or `timestamp`.
+The datetime to be formated. can be `datetime string`, `Date instance`, or `timestamp`.
 
  - **`live`** (optional, boolean)
 
-live render, default is `true`.
+Live render, default is `true`.
 
  - **`className`** (optional, string)
 
-the `class` of span. you can setting the css style of span by class name.
+The `class` of span. you can setting the css style of span by class name.
 
  - **`locale`** (optional, string)
 
-the `locale` language of statement, default is `en`. `zh_CN` and `en` are supported.
+The `locale` language of statement, default is `en`. `zh_CN` and `en` are supported.
 
 
 # 4. LICENSE
