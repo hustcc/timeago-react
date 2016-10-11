@@ -1,6 +1,6 @@
 import React from 'react';
 import TimeAgo from '../';
-import AdSence from 'react-adsence';
+import AdSense from 'react-adsense';
 
 const TimeagoComponent = React.createClass({
   render: function() {
@@ -9,7 +9,7 @@ const TimeagoComponent = React.createClass({
         <h1> timeago-react </h1>
         <h3> A simple and efficient component to format date with `*** time ago` statement.</h3>
         
-        <AdSence.Google client='ca-pub-7292810486004926'
+        <AdSense.Google client='ca-pub-7292810486004926'
                         slot='7806394673' />
 
         <div className='examples'>
