@@ -27,14 +27,14 @@ const TimeagoComponent = React.createClass({
         
         <div className='examples'>
             <div className='parent'>
-                <label> 2. Use `locale` parameter. Default is `en`.</label>
+                <label> 2. Use `locale` parameter. Default is `en`. Supported locales see <a href="https://github.com/hustcc/timeago.js/tree/master/locales">here</a></label>
                 Hustcc born in&nbsp;
                 <strong>
                   <TimeAgo datetime={'1992-08-01'}
-                          locale={'zh_CN'} />
+                          locale={'vi'} />
                 </strong>.
                 <pre>
-                    <code>{"<TimeAgo datetime={'1992-08-01'} \n\tlocale={'zh_CN'} /> \n"}</code>
+                    <code>{"<TimeAgo datetime={'1992-08-01'} \n\tlocale={'vi'} /> \n"}</code>
                 </pre>
             </div>
         </div>

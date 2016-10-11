@@ -6,11 +6,17 @@ const TimeAgo = React.createClass({
   propTypes: {
     datetime: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.instanceOf(Date), React.PropTypes.number]).isRequired,  // date to be formated
     live: React.PropTypes.bool,               // real time render.
-    locale: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.object]),            // locale lang
+    locale: React.PropTypes.string,            // locale lang
     className: React.PropTypes.string         //  class name
+  },
+  getDefaultProps() {
+    return {live: true, locale: 'en'};
   },
   // first add
   componentDidMount() {
+    if (this.props.locale !== 'en' && this.props.locale !== 'zh_CN')
+      timeago.register(this.props.locale, require('timeago.js/locales/' + this.props.locale));
+
     this.renderTimeAgo();
   },
   // init instance

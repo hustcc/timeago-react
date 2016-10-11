@@ -8,6 +8,7 @@
  - Realtime render. Automatic release the resources.
  - Simple. Only 2kb.
  - Efficient. When the time is `3 hour ago`, the interval will an hour (3600 * 1000 ms).
+ - Locales supported.
 
 [![Build Status](https://travis-ci.org/hustcc/timeago-react.svg?branch=master)](https://travis-ci.org/hustcc/timeago-react) [![npm](https://img.shields.io/npm/v/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/dt/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/l/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react)
 
@@ -45,7 +46,7 @@ The `class` of span. you can setting the css style of span by class name.
 
  - **`locale`** (optional, string)
 
-The `locale` language of statement, default is `en`. `zh_CN` and `en` are supported.
+The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales).
 
 
 # 4. LICENSE
