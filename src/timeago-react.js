@@ -7,6 +7,7 @@ const TimeAgo = React.createClass({
     datetime: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.instanceOf(Date), React.PropTypes.number]).isRequired,  // date to be formated
     live: React.PropTypes.bool,               // real time render.
     locale: React.PropTypes.string,            // locale lang
+    localeFunc: React.PropTypes.func,          // custome locale function
     className: React.PropTypes.string         //  class name
   },
   getDefaultProps() {
@@ -14,8 +15,13 @@ const TimeAgo = React.createClass({
   },
   // first add
   componentDidMount() {
-    if (this.props.locale !== 'en' && this.props.locale !== 'zh_CN')
-      timeago.register(this.props.locale, require('timeago.js/locales/' + this.props.locale));
+    if (this.props.locale !== 'en' && this.props.locale !== 'zh_CN') {
+      if (localeFunc) {
+        timeago.register(this.props.locale, localeFunc);
+      } else {
+        timeago.register(this.props.locale, require('timeago.js/locales/' + this.props.locale));
+      }
+    }
 
     this.renderTimeAgo();
   },
