@@ -60,6 +60,7 @@
     "timeago.js": "^2.0.5"
   },
   "peerDependencies": {
-    "react": ">=15.5.0"
+    "react": "^0.14.0 || ^15.0.0",
+    "prop-types": "^15.0.0"
   }
 }
