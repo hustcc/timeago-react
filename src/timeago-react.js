@@ -1,60 +1,74 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import timeago from 'timeago.js';
 
-const TimeAgo = React.createClass({
-  timeagoInstance: null,
-  propTypes: {
-    datetime: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.instanceOf(Date), React.PropTypes.number]).isRequired,  // date to be formated
-    live: React.PropTypes.bool,               // real time render.
-    locale: React.PropTypes.string,            // locale lang
-    className: React.PropTypes.string         //  class name
-  },
-  getDefaultProps() {
-    return {live: true, locale: 'en'};
-  },
+export default class TimeAgo extends React.Component {
+  constructor(props) {
+    super(props)
+    this.timeagoInstance = null;
+  }
   // first add
   componentDidMount() {
-    if (this.props.locale !== 'en' && this.props.locale !== 'zh_CN')
-      timeago.register(this.props.locale, require('timeago.js/locales/' + this.props.locale));
+    const { locale } = this.props
+    if (locale !== 'en' && locale !== 'zh_CN')
+      timeago.register(locale, require('timeago.js/locales/' + locale));
 
     this.renderTimeAgo();
-  },
+  }
   // init instance
   componentWillMount() {
     if (this.timeagoInstance === null)
       this.timeagoInstance = timeago();
-  },
+  }
   // update
   componentDidUpdate() {
     this.renderTimeAgo();
-  },
+  }
   renderTimeAgo() {
+    const { live, datetime, locale } = this.props;
     // cancel all the interval
     this.timeagoInstance.cancel();
     // if is live
-    if (this.props.live !== false) {
+    if (this.live !== false) {
       // live render
-      if (this.props.datetime instanceof Date)
-        this.refs.timeagoDom.setAttribute('datetime', this.props.datetime.getTime());
-      else 
-        this.refs.timeagoDom.setAttribute('datetime', this.props.datetime);
-      this.timeagoInstance.render(this.refs.timeagoDom, this.props.locale);
+      if (datetime instanceof Date) {
+        this.timeagoDom.setAttribute('datetime', datetime.getTime());
+      } else {
+        this.timeagoDom.setAttribute('datetime', datetime);
+      }
+      this.timeagoInstance.render(this.timeagoDom, locale);
     }
-  },
+  }
   // remove
   componentWillUnmount() {
     this.timeagoInstance.cancel();
     this.timeagoInstance = null;
-  },
+  }
+  // for render
   render() {
-    // for render
+    const { datetime, locale } = this.props;
     return (
-      <time 
-        ref='timeagoDom'
+      <time
+        ref={(c) => { this.timeagoDom = c }}
         className={this.props.className || ''}>
-          {this.timeagoInstance.format(this.props.datetime, this.props.locale)}
+          {this.timeagoInstance.format(datetime, locale)}
       </time>
     );
   }
-});
-module.exports = TimeAgo;
+};
+
+TimeAgo.propTypes = {
+  datetime: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.instanceOf(Date),
+    PropTypes.number
+  ]).isRequired,  // date to be formated
+  live: PropTypes.bool,        // real time render.
+  locale: PropTypes.string,    // locale lang
+  className: PropTypes.string  //  class name
+};
+
+TimeAgo.defaultProps = {
+  live: true,
+  locale: 'en'
+};
