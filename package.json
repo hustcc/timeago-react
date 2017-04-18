@@ -7,10 +7,11 @@
     "start": "webpack-dev-server --watch",
     "lint": "eslint src",
     "clean": "rimraf lib",
-    "test": "npm run lint",
-    "build": "npm run clean && cross-env NODE_ENV=production babel src -d lib && npm run build-demos",
+    "test": "npm run lint && npm run jest",
+    "build": "npm run clean && cross-env NODE_ENV=production babel src -d lib && npm run build-demos && npm run test",
     "build-demos": "webpack",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "jest": "jest"
   },
   "repository": {
     "type": "git",
@@ -54,13 +55,28 @@
     "cross-env": "^1.0.8",
     "react-router": "^2.0.0",
     "babel-plugin-transform-es3-property-literals": "*",
-    "babel-plugin-transform-es3-member-expression-literals": "*"
+    "babel-plugin-transform-es3-member-expression-literals": "*",
+    "enzyme": "^2.8.2",
+    "jest": "^19.0.2",
+    "react-test-renderer": "^15.5.4",
+    "prop-types": "^15.0.0"
   },
   "dependencies": {
     "timeago.js": "^2.0.5"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0",
+    "react": ">=0.13.2 || ^0.14.0 || ^15.0.0",
     "prop-types": "^15.0.0"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom" : ["src/timeago-react.*"]
   }
 }
