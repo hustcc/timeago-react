@@ -10,7 +10,7 @@
  - Efficient. When the time is `3 hour ago`, the interval will an hour (3600 * 1000 ms).
  - Locales supported.
 
-[![Build Status](https://travis-ci.org/hustcc/timeago-react.svg?branch=master)](https://travis-ci.org/hustcc/timeago-react) [![npm](https://img.shields.io/npm/v/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/dt/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/l/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react)
+[![Build Status](https://travis-ci.org/hustcc/timeago-react.svg?branch=master)](https://travis-ci.org/hustcc/timeago-react) [![npm](https://img.shields.io/npm/v/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/dt/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/l/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![react supported](https://img.shields.io/badge/React-%3E%3D0.13.2%20%7C%7C%20%5E0.14.0%20%7C%7C%20%5E15.0.0-blue.svg?style=flat-square)](https://github.com/hustcc/timeago-react)
 
 
 # 1. install
