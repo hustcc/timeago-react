@@ -50,7 +50,8 @@ export default class TimeAgo extends React.Component {
     return (
       <time
         ref={(c) => { this.timeagoDom = c }}
-        className={this.props.className || ''}>
+        className={this.props.className || ''}
+        style={this.props.style}>
           {this.timeagoInstance.format(datetime, locale)}
       </time>
     );
@@ -65,7 +66,8 @@ TimeAgo.propTypes = {
   ]).isRequired,  // date to be formated
   live: PropTypes.bool,        // real time render.
   locale: PropTypes.string,    // locale lang
-  className: PropTypes.string  //  class name
+  className: PropTypes.string, // class name
+  style: PropTypes.object      // style object
 };
 
 TimeAgo.defaultProps = {
