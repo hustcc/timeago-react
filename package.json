@@ -29,7 +29,7 @@
   "author": "hustcc (http://github.com/hustcc)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hustcc/timeagp-react/issues"
+    "url": "https://github.com/hustcc/timeago-react/issues"
   },
   "homepage": "https://github.com/hustcc/timeago-react",
   "devDependencies": {
