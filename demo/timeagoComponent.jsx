@@ -52,6 +52,20 @@ export default class TimeagoComponent extends React.Component {
                 </pre>
             </div>
         </div>
+
+        <div className='examples'>
+            <div className='parent'>
+                <label> 4. Use `style` parameter. Styles will be applied to the root element.</label>
+                Earth Day 2017 was&nbsp;
+                <strong>
+                  <TimeAgo datetime={'2017-04-22'}
+                     style={{textDecoration: 'underline', color: 'blue'}}/>
+                </strong>.
+                <pre>
+                    <code>{"<TimeAgo datetime={'2017-04-22'} \n\tstyle={{textDecoration: 'underline', color: 'blue'}} /> \n"}</code>
+                </pre>
+            </div>
+        </div>
         <h3>Download / Document on GitHub! <a href='https://github.com/hustcc/timeago-react'>timeago-react</a></h3>
       </div>
     );
