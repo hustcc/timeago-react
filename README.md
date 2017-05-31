@@ -48,6 +48,11 @@ The `class` of span. you can setting the css style of span by class name.
 
 The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales).
 
+ - **`style`** (optional, object)
+
+The `style` object to applied to the root element.
+
+Props not documented above are applied to the root element.
 
 # 4. LICENSE
 
