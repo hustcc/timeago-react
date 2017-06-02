@@ -46,7 +46,7 @@ export default class TimeAgo extends React.Component {
   }
   // for render
   render() {
-    const { datetime, locale, className, style, ...others } = this.props;
+    const { datetime, live, locale, className, style, ...others } = this.props;
     return (
       <time
         ref={(c) => { this.timeagoDom = c }}
