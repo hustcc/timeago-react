@@ -41,7 +41,7 @@ export default class TimeAgo extends React.Component {
   }
   // remove
   componentWillUnmount() {
-    this.timeagoInstance.cancel();
+    timeago.cancel();
     this.timeagoInstance = null;
   }
   // for render
