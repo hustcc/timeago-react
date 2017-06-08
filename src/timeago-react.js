@@ -27,7 +27,7 @@ export default class TimeAgo extends React.Component {
   renderTimeAgo() {
     const { live, datetime, locale } = this.props;
     // cancel all the interval
-    // timeago.cancel();
+    timeago.cancel(this.timeagoDom);
     // if is live
     if (this.live !== false) {
       // live render
@@ -41,7 +41,7 @@ export default class TimeAgo extends React.Component {
   }
   // remove
   componentWillUnmount() {
-    timeago.cancel();
+    timeago.cancel(this.timeagoDom);
     this.timeagoInstance = null;
   }
   // for render
