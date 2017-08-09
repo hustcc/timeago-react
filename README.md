@@ -59,7 +59,7 @@ timeago.register('vi', require('timeago.js/locales/vi'));
 // then use it.
 <TimeAgo
   datetime={'2016-08-08 08:08:08'} 
-  locale='sv' />
+  locale='vi' />
 ```
 
  - **`style`** (optional, object)
