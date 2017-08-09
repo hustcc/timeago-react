@@ -46,7 +46,21 @@ The `class` of span. you can setting the css style of span by class name.
 
  - **`locale`** (optional, string)
 
-The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales).
+The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
+
+```js
+import React from 'react';
+import TimeAgo from 'timeago-react';
+import timeago from 'timeago.js';
+
+// import it first.
+timeago.register('vi', require('timeago.js/locales/vi'));
+
+// then use it.
+<TimeAgo
+  datetime={'2016-08-08 08:08:08'} 
+  locale='sv' />
+```
 
  - **`style`** (optional, object)
 
@@ -57,3 +71,5 @@ Props not documented above are applied to the root element.
 # 4. LICENSE
 
 MIT
+
+

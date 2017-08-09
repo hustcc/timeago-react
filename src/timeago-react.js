@@ -4,15 +4,18 @@ import timeago from 'timeago.js';
 
 export default class TimeAgo extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.timeagoInstance = null;
   }
   // first add
   componentDidMount() {
-    const { locale } = this.props
-    if (locale !== 'en' && locale !== 'zh_CN')
-      timeago.register(locale, require('timeago.js/locales/' + locale));
-
+    // fixed #6 https://github.com/hustcc/timeago-react/issues/6
+    // to reduce the file size.
+    // const { locale } = this.props;
+    // if (locale !== 'en' && locale !== 'zh_CN') {
+    //   timeago.register(locale, require('timeago.js/locales/' + locale));
+    // }
+    // render it.
     this.renderTimeAgo();
   }
   // init instance
@@ -29,7 +32,7 @@ export default class TimeAgo extends React.Component {
     // cancel all the interval
     timeago.cancel(this.timeagoDom);
     // if is live
-    if (this.live !== false) {
+    if (live !== false) {
       // live render
       if (datetime instanceof Date) {
         this.timeagoDom.setAttribute('datetime', datetime.getTime());
