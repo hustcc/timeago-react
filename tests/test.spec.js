@@ -3,15 +3,15 @@ import TimeAgo from '../src/timeago-react.js';
 import { shallow } from 'enzyme';
 
 // from http://www.cnblogs.com/zhangpengshou/archive/2012/07/19/2599053.html
-Date.prototype.Format = function (fmt) { //author: meizz 
+Date.prototype.Format = function (fmt) { //author: meizz
   let o = {
-    "M+": this.getMonth() + 1, //月份 
-    "d+": this.getDate(), //日 
-    "h+": this.getHours(), //小时 
-    "m+": this.getMinutes(), //分 
-    "s+": this.getSeconds(), //秒 
-    "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-    "S": this.getMilliseconds() //毫秒 
+    "M+": this.getMonth() + 1, //月份
+    "d+": this.getDate(), //日
+    "h+": this.getHours(), //小时
+    "m+": this.getMinutes(), //分
+    "s+": this.getSeconds(), //秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+    "S": this.getMilliseconds() //毫秒
   };
   if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
   for (let k in o)
@@ -55,15 +55,15 @@ test('test timeago-react with `datetime` and `locale`.', () => {
     <TimeAgo datetime={d} locale='zh_CN' />
   );
   expect(component.find('time').length).toBe(1);
-  expect(component.find('time').text()).toEqual('1小时前');
-  
+  expect(component.find('time').text()).toEqual('1 小时前');
+
   // test Date instance
   d = new Date() - 24 * 3601 * 1000; // 1 day ago
   component = shallow(
     <TimeAgo datetime={new Date(d)} locale='zh_CN'  />
   );
   expect(component.find('time').length).toBe(1);
-  expect(component.find('time').text()).toEqual('1天前');
+  expect(component.find('time').text()).toEqual('1 天前');
 
   // test Date string
   d = new Date() - 24 * 3601 * 1000; // 1 day ago
@@ -72,7 +72,7 @@ test('test timeago-react with `datetime` and `locale`.', () => {
     <TimeAgo datetime={d} locale='zh_CN' />
   );
   expect(component.find('time').length).toBe(1);
-  expect(component.find('time').text()).toEqual('1天前');
+  expect(component.find('time').text()).toEqual('1 天前');
 });
 
 

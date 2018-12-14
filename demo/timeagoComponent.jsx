@@ -1,9 +1,9 @@
 import React from 'react';
-import timeago from 'timeago.js';
+import { register } from 'timeago.js';
 import TimeAgo from '../';
 import AdSense from 'react-adsense';
 
-timeago.register('vi', require('timeago.js/locales/vi'));
+register('vi', require('timeago.js/lib/lang/vi'));
 
 
 export default class TimeagoComponent extends React.Component {

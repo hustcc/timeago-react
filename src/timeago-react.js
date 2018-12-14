@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import timeago from 'timeago.js';
+import { format, render, cancel } from 'timeago.js';
 
 export default class TimeAgo extends React.Component {
   constructor(props) {
     super(props);
-    this.timeagoInstance = null;
+
+    this.dom = null;
   }
+
   // first add
   componentDidMount() {
     // fixed #6 https://github.com/hustcc/timeago-react/issues/6
@@ -18,45 +20,42 @@ export default class TimeAgo extends React.Component {
     // render it.
     this.renderTimeAgo();
   }
-  // init instance
-  componentWillMount() {
-    if (this.timeagoInstance === null)
-      this.timeagoInstance = timeago();
-  }
+
   // update
   componentDidUpdate() {
     this.renderTimeAgo();
   }
+
   renderTimeAgo() {
     const { live, datetime, locale } = this.props;
     // cancel all the interval
-    timeago.cancel(this.timeagoDom);
+    cancel(this.dom);
     // if is live
     if (live !== false) {
       // live render
-      if (datetime instanceof Date) {
-        this.timeagoDom.setAttribute('datetime', datetime.getTime());
-      } else {
-        this.timeagoDom.setAttribute('datetime', datetime);
-      }
-      this.timeagoInstance.render(this.timeagoDom, locale);
+      const dateString = datetime instanceof Date ? datetime.getTime() : datetime;
+      this.dom.setAttribute('datetime', dateString);
+
+      render(this.dom, locale);
     }
   }
+
   // remove
   componentWillUnmount() {
-    timeago.cancel(this.timeagoDom);
-    this.timeagoInstance = null;
+    cancel(this.dom);
   }
+
   // for render
   render() {
     const { datetime, live, locale, className, style, ...others } = this.props;
     return (
       <time
-        ref={(c) => { this.timeagoDom = c }}
+        ref={(c) => { this.dom = c }}
         className={className || ''}
         style={style}
-        {...others}>
-          {this.timeagoInstance.format(datetime, locale)}
+        {...others}
+      >
+        {format(datetime, locale)}
       </time>
     );
   }

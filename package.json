@@ -1,7 +1,7 @@
 {
   "name": "timeago-react",
-  "version": "2.0.0",
-  "description": "timeago-react is a simple(only 2kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
+  "version": "2.0.1",
+  "description": "timeago-react is a simple(only 1kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
   "main": "lib/timeago-react.js",
   "scripts": {
     "lint": "eslint src",
@@ -62,11 +62,11 @@
     "webpack": "^1.12.9"
   },
   "dependencies": {
-    "timeago.js": "^3.0.1"
+    "timeago.js": "^4.0.0-beta.2"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
-    "react": ">=0.13.2 || ^0.14.0 || ^15.0.0"
+    "react": ">=0.13.2 || ^0.14.0 || ^15.0.0 || ^16.0.0"
   },
   "jest": {
     "testRegex": "(/tests/.*|\\.(test|spec))\\.(ts|tsx|js)$",
