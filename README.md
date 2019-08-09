@@ -51,7 +51,7 @@ The `locale` language of statement, default is `en`. All supported locales [here
 ```js
 import React from 'react';
 import TimeAgo from 'timeago-react';
-import timeago from 'timeago.js';
+import * as timeago from 'timeago.js';
 
 // import it first.
 timeago.register('vi', require('timeago.js/locales/vi'));
