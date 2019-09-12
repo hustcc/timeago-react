@@ -8,4 +8,6 @@ export interface Props {
     style?: object;
 }
 
-export class TimeAgo extends React.Component<Props> { }
+declare module 'timeago-react' {
+    export default class TimeAgo extends React.Component<Props> { }
+}
