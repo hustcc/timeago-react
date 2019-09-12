@@ -12,6 +12,7 @@
     "prepublish": "npm run build",
     "jest": "jest"
   },
+  "typings": "./timeago.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/hustcc/timeago-react.git"
