@@ -1,5 +1,5 @@
 import React from 'react';
-import TimeAgo from '../src/timeago-react.tsx';
+import TimeAgo from '../src';
 import { shallow } from 'enzyme';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
