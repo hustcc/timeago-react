@@ -2,12 +2,13 @@
   "name": "timeago-react",
   "version": "3.0.0",
   "description": "timeago-react is a simple(only 1kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
-  "main": "./src/timeago-react.tsx",
+  "main": "dist/index.js",
+  "types" : "dist/index.d.ts",
   "scripts": {
     "lint": "eslint src",
     "clean": "rimraf lib",
     "test": "npm run lint --scripts-prepend-node-path && npm run jest",
-    "build": "npm run clean && cross-env NODE_ENV=production npx babel --extensions '.ts,.tsx' src -d lib && npm run build-demos && npm run test",
+    "build": "npm run clean && tsc && npm run build-demos && npm run test",
     "build-demos": "webpack",
     "prepublish": "npm run build",
     "jest": "jest"

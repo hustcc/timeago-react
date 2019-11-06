@@ -15,9 +15,9 @@ export default class TimeAgo extends Component<Props> {
     locale: "en"
   };
 
-  private dom: HTMLElement;
+  private dom: HTMLElement | null;
 
-  constructor(props) {
+  constructor(props: Readonly<Props>) {
     super(props);
     this.dom = null;
   }
@@ -41,22 +41,26 @@ export default class TimeAgo extends Component<Props> {
 
   renderTimeAgo() {
     const { live, datetime, locale } = this.props;
-    // cancel all the interval
-    cancel(this.dom);
-    // if is live
-    if (live !== false) {
-      // live render
-      const dateString =
-        datetime instanceof Date ? datetime.getTime() : datetime;
-      this.dom.setAttribute("datetime", String(dateString));
+    if (this.dom !== null) {
+      // cancel all the interval
+      cancel(this.dom);
+      // if is live
+      if (live !== false) {
+        // live render
+        const dateString =
+          datetime instanceof Date ? datetime.getTime() : datetime;
+        this.dom.setAttribute("datetime", String(dateString));
 
-      render(this.dom, locale);
+        render(this.dom, locale);
+      }
     }
   }
 
   // remove
   componentWillUnmount() {
-    cancel(this.dom);
+    if (this.dom !== null) {
+      cancel(this.dom);
+    }
   }
 
   render() {
