@@ -7,7 +7,7 @@
   "scripts": {
     "lint": "eslint src",
     "clean": "rimraf lib",
-    "test": "npm run lint && npm run jest",
+    "test": "npm run lint --scripts-prepend-node-path && npm run jest",
     "build": "npm run clean && cross-env NODE_ENV=production npx babel --extensions '.ts,.tsx' src -d lib && npm run build-demos && npm run test",
     "build-demos": "webpack",
     "prepublish": "npm run build",
@@ -27,6 +27,9 @@
     "react-component"
   ],
   "author": "hustcc (http://github.com/hustcc)",
+  "contributors": [
+    "Lee Seungmin <me@2sm.kr> (https://github.com/yooonspace)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/hustcc/timeago-react/issues"
@@ -37,9 +40,13 @@
     "@babel/core": "^7.7.0",
     "@babel/plugin-proposal-class-properties": "^7.7.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.6.2",
+    "@babel/polyfill": "^7.7.0",
     "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@babel/preset-typescript": "^7.7.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
     "cross-env": "^1.0.8",
     "css-loader": "~0.16.0",
     "enzyme": "^3.10.0",
@@ -54,20 +61,13 @@
     "react": "^16.11.0",
     "react-adsense": "^0.0.1",
     "react-dom": "^16.11.0",
-    "react-router": "^2.0.0",
-    "react-test-renderer": "^15.5.4",
-    "regenerator-runtime": "^0.13.3",
     "rimraf": "^2.5.0",
     "style-loader": "~0.12.3",
-    "webpack": "^1.12.9",
-    "@babel/polyfill": "^7.7.0",
-    "@babel/preset-react": "^7.7.0",
-    "@babel/preset-typescript": "^7.7.0",
-    "babel-loader": "^8.0.6",
-    "typescript": "^3.7.2"
+    "typescript": "^3.7.2",
+    "webpack": "^1.12.9"
   },
   "dependencies": {
-    "timeago.js": "^4.0.0-beta.2"
+    "timeago.js": "^4.0.1"
   },
   "peerDependencies": {
     "prop-types": "^15.0.0",
