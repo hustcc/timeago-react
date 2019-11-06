@@ -1,7 +1,7 @@
-import React, { RefObject, TimeHTMLAttributes, useEffect, useRef } from "react";
+import React, { RefObject, Component, useRef, LegacyRef } from "react";
 import { format, render, cancel } from "timeago.js";
 
-export interface Props {
+interface Props {
   datetime: string | Date | number;
   live?: boolean;
   locale?: string;
@@ -9,37 +9,69 @@ export interface Props {
   style?: object;
 }
 
-const TimeAgo = (props: Props) => {
-  const { datetime, live, locale, className, style, ...others } = props;
+export default class TimeAgo extends Component<Props> {
+  static defaultProps = {
+    live: true,
+    locale: "en"
+  };
 
-  const dom: RefObject<HTMLElement> = useRef();
+  private dom: HTMLElement;
 
-  useEffect(() => {
-    renderTimeAgo();
-    return () => cancel(dom.current);
-  }, []);
+  constructor(props) {
+    super(props);
+    this.dom = null;
+  }
 
-  useEffect(() => {
-    renderTimeAgo();
-  }, [props]);
+  // first add
+  componentDidMount() {
+    // fixed #6 https://github.com/hustcc/timeago-react/issues/6
+    // to reduce the file size.
+    // const { locale } = this.props;
+    // if (locale !== 'en' && locale !== 'zh_CN') {
+    //   timeago.register(locale, require('timeago.js/locales/' + locale));
+    // }
+    // render it.
+    this.renderTimeAgo();
+  }
 
-  const renderTimeAgo = () => {
+  // update
+  componentDidUpdate() {
+    this.renderTimeAgo();
+  }
+
+  renderTimeAgo() {
+    const { live, datetime, locale } = this.props;
     // cancel all the interval
-    cancel(dom.current);
+    cancel(this.dom);
     // if is live
     if (live !== false) {
       // live render
       const dateString =
         datetime instanceof Date ? datetime.getTime() : datetime;
-      dom.current.setAttribute("datetime", String(dateString));
-      render(dom.current, locale || 'en');
-    }
-  };
-  return (
-    <time ref={dom} className={className || ""} style={style} {...others}>
-      {format(datetime, locale || 'en')}
-    </time>
-  );
-};
+      this.dom.setAttribute("datetime", String(dateString));
 
-export default TimeAgo;
+      render(this.dom, locale);
+    }
+  }
+
+  // remove
+  componentWillUnmount() {
+    cancel(this.dom);
+  }
+
+  render() {
+    const { datetime, live, locale, className, style, ...others } = this.props;
+    return (
+      <time
+        ref={r => {
+          this.dom = r;
+        }}
+        className={className || ""}
+        style={style}
+        {...others}
+      >
+        {format(datetime, locale || "en")}
+      </time>
+    );
+  }
+}

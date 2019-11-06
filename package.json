@@ -3,7 +3,6 @@
   "version": "3.0.0",
   "description": "timeago-react is a simple(only 1kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
   "main": "lib/timeago-react.js",
-  "typings": "./index.d.ts",
   "scripts": {
     "lint": "eslint src",
     "clean": "rimraf lib",
@@ -44,6 +43,7 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "@babel/preset-typescript": "^7.7.0",
+    "@types/react": "^16.9.11",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
