@@ -1,6 +1,10 @@
 import React from 'react';
-import TimeAgo from '../src/timeago-react.js';
+import TimeAgo from '../src/timeago-react.tsx';
 import { shallow } from 'enzyme';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
 
 // from http://www.cnblogs.com/zhangpengshou/archive/2012/07/19/2599053.html
 Date.prototype.Format = function (fmt) { //author: meizz
