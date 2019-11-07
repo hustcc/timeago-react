@@ -6,7 +6,7 @@
   "types" : "dist/index.d.ts",
   "scripts": {
     "lint": "eslint src",
-    "clean": "rimraf lib",
+    "clean": "rimraf dist",
     "test": "npm run lint --scripts-prepend-node-path && npm run jest",
     "build": "npm run clean && tsc && npm run build-demos && npm run test",
     "build-demos": "webpack",

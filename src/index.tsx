@@ -1,4 +1,4 @@
-import React, { RefObject, Component, useRef, LegacyRef } from "react";
+import React, { Component } from "react";
 import { format, render, cancel } from "timeago.js";
 
 interface Props {
