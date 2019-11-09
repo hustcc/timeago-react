@@ -85,11 +85,11 @@ export default class TimeagoComponent extends React.Component {
             </label>
             2019-11-10 is&nbsp;
             <strong>
-              <TimeAgo datetime={'2019-11-10'} relativeDate={'2019-11-11'} />
+              <TimeAgo datetime={'2019-11-10'} opts={{ relativeDate: '2019-11-11' }} />
             </strong>
             &nbsp;relative to 2019-11-11.
             <pre>
-              <code>{"<TimeAgo datetime={'2019-11-10'} relativeDate={'2019-11-11'} />\n"}</code>
+              <code>{"<TimeAgo datetime={'2019-11-10'} opts={{ relativeDate: '2019-11-11' }} />\n"}</code>
             </pre>
           </div>
         </div>
