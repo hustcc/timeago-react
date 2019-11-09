@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "declaration": false,
+    "pretty": false
+  },
+  "extends": "./tsconfig.json",
+  "include": ["demo/**/*"]
+}
+  
