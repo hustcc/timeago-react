@@ -40,14 +40,6 @@ The datetime to be formated. can be `datetime string`, `Date instance`, or `time
 
 Live render, default is `true`.
 
- - **`relativeDate`** (optional, string / Date / timestamp) 
-
-The datetime to be calculated interval relative to. 
-
- - **`minInterval`** (optional, number)
-
-The min interval to update the ** time ago string
-
  - **`className`** (optional, string)
 
 The `class` of span. you can setting the css style of span by class name.
@@ -55,6 +47,14 @@ The `class` of span. you can setting the css style of span by class name.
  - **`locale`** (optional, string)
 
 The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
+
+ - **`opts.relativeDate`** (optional, string / Date / timestamp) 
+
+The datetime to be calculated interval relative to. 
+
+ - **`opts.minInterval`** (optional, number)
+
+The min interval to update the ** time ago string
 
 ```js
 import React from 'react';
