@@ -1,5 +1,7 @@
 import React from 'react';
 import { format, cancel, render } from 'timeago.js';
+import { Opts, TDate } from 'timeago.js/lib/interface';
+export { Opts, TDate };
 
 /**
  * Convert input to a valid datetime string of <time> tag
@@ -7,7 +9,7 @@ import { format, cancel, render } from 'timeago.js';
  * @param input
  * @returns datetime string
  */
-const toDateTime = (input: string | number | Date): string => {
+const toDateTime = (input: TDate): string => {
   // let date: Date = new Date();
   // if (input instanceof Date) {
   //   date = input;
@@ -29,15 +31,10 @@ const toDateTime = (input: string | number | Date): string => {
   return '' + (input instanceof Date ? input.getTime() : input);
 };
 
-export interface TimeAgoOpts {
-  readonly relativeDate?: string | number | Date; // relative to which date
-  readonly minInterval?: number;
-}
-
 export interface TimeAgoProps {
-  readonly datetime: string | number | Date; // date to be formatted
+  readonly datetime: TDate; // date to be formatted
   readonly live?: boolean; // real time render.
-  readonly opts?: TimeAgoOpts;
+  readonly opts?: Opts;
   readonly locale?: string; // locale lang
   readonly className?: string; // class name
   readonly style?: React.CSSProperties; // style object
