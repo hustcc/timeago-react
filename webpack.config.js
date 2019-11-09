@@ -1,30 +1,41 @@
-var webpack = require('webpack');
-var uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({compress: {warnings: false}});
-var definePlugin = new webpack.DefinePlugin({
-  'process.env': {
-    NODE_ENV: '"production"',
-  },
-});
+var path = require('path');
 
-module.exports = {
-  entry: './demo/demo.jsx',
-  output: {
-    path: './demo/dist/', filename: 'bundle.js'
-  },
-  module: {
-    loaders:[{
-      test: /\.js[x]?$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader?presets[]=es2015&presets[]=react',
-    }, { 
-      test: /\.css$/, 
-      loader: 'style-loader!css-loader' 
-    }, { 
-      test: /\.(png|jpg)$/, 
-      loader: 'url-loader?limit=512'
-    }]
-  },
-  plugins: [
-    uglifyJsPlugin, definePlugin
-  ]
+module.exports = function (env = {}) {
+  return {
+    mode: env.prod ? 'production' : 'development',
+    devtool: env.prod ? '' : 'cheap-module-eval-source-map',
+    watch: !env.prod,
+    entry: './demo/demo.tsx',
+    output: {
+      path: path.resolve(__dirname, './demo/dist/'),
+      filename: 'bundle.js',
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js'],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          exclude: /node_modules/,
+          use: [
+            {
+              loader: 'ts-loader',
+              options: {
+                configFile: 'tsconfig.demo.json',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.css$/,
+          loader: 'style-loader!css-loader',
+        },
+        {
+          test: /\.(png|jpg)$/,
+          loader: 'url-loader?limit=512',
+        },
+      ],
+    },
+  };
 };

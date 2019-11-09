@@ -2,3 +2,5 @@ node_modules/
 npm-debug.*
 .idea
 coverage
+lib/
+esm/

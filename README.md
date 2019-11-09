@@ -40,6 +40,14 @@ The datetime to be formated. can be `datetime string`, `Date instance`, or `time
 
 Live render, default is `true`.
 
+ - **`relativeDate`** (optional, string / Date / timestamp) 
+
+The datetime to be calculated interval relative to. 
+
+ - **`minInterval`** (optional, number)
+
+The min interval to update the ** time ago string
+
  - **`className`** (optional, string)
 
 The `class` of span. you can setting the css style of span by class name.
