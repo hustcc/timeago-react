@@ -29,11 +29,15 @@ const toDateTime = (input: string | number | Date): string => {
   return '' + (input instanceof Date ? input.getTime() : input);
 };
 
+export interface TimeAgoOpts {
+  readonly relativeDate?: string | number | Date; // relative to which date
+  readonly minInterval?: number;
+}
+
 export interface TimeAgoProps {
   readonly datetime: string | number | Date; // date to be formatted
   readonly live?: boolean; // real time render.
-  readonly relativeDate?: string | number | Date; // relative to which date
-  readonly minInterval?: number;
+  readonly opts?: TimeAgoOpts;
   readonly locale?: string; // locale lang
   readonly className?: string; // class name
   readonly style?: React.CSSProperties; // style object
@@ -63,7 +67,7 @@ export default class TimeAgo extends React.Component<TimeAgoProps> {
   }
 
   renderTimeAgo(): void {
-    const { live, datetime, locale, relativeDate, minInterval } = this.props;
+    const { live, datetime, locale, opts } = this.props;
     // cancel all the interval
     cancel(this.dom);
     // if is live
@@ -71,7 +75,7 @@ export default class TimeAgo extends React.Component<TimeAgoProps> {
       // live render
       this.dom.setAttribute('datetime', toDateTime(datetime));
 
-      render(this.dom, locale, { relativeDate, minInterval });
+      render(this.dom, locale, opts);
     }
   }
 
@@ -82,7 +86,7 @@ export default class TimeAgo extends React.Component<TimeAgoProps> {
 
   // for render
   render(): JSX.Element {
-    const { datetime, live, locale, relativeDate, minInterval, ...others } = this.props;
+    const { datetime, live, locale, opts, ...others } = this.props;
     return (
       <time
         ref={(c): void => {
@@ -90,7 +94,7 @@ export default class TimeAgo extends React.Component<TimeAgoProps> {
         }}
         {...others}
       >
-        {format(datetime, locale, { relativeDate })}
+        {format(datetime, locale, opts)}
       </time>
     );
   }

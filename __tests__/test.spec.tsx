@@ -68,8 +68,8 @@ test('test timeago-react with `className`.', () => {
   expect(component.find('time').prop('className')).toEqual('my_classname');
 });
 
-test('test timeago-react with `relativeDate`.', () => {
-  const component = mount(<TimeAgo datetime={'2019-11-10'} relativeDate={'2019-11-11'} locale="zh_CN" />);
+test('test timeago-react with `opts.relativeDate`.', () => {
+  const component = mount(<TimeAgo datetime={'2019-11-10'} opts={{ relativeDate: '2019-11-11' }} locale="zh_CN" />);
   expect(component.find('time').length).toBe(1);
   expect(component.find('time').text()).toEqual('1 天前');
 });
