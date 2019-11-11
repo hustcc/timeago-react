@@ -10,31 +10,36 @@
  - Efficient. When the time is `3 hour ago`, the interval will an hour (3600 * 1000 ms).
  - Locales supported.
 
-[![Build Status](https://travis-ci.org/hustcc/timeago-react.svg?branch=master)](https://travis-ci.org/hustcc/timeago-react) [![npm](https://img.shields.io/npm/v/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/dt/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![npm](https://img.shields.io/npm/l/timeago-react.svg?style=flat-square)](https://www.npmjs.com/package/timeago-react) [![react supported](https://img.shields.io/badge/React-%3E%3D0.13.2%20%7C%7C%20%5E0.14.0%20%7C%7C%20%5E15.0.0-blue.svg?style=flat-square)](https://github.com/hustcc/timeago-react)
+[![npm](https://img.shields.io/npm/v/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
+[![Build Status](https://travis-ci.org/hustcc/timeago-react.svg?branch=master)](https://travis-ci.org/hustcc/timeago-react)
+[![npm](https://img.shields.io/npm/dm/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
+[![react supported](https://img.shields.io/badge/React-%5E0.14.0%20%7C%7C%20%5E15.0.0%20%7C%7C%20%5E16.0.0-blue.svg)](https://github.com/hustcc/timeago-react)
+[![npm](https://img.shields.io/npm/l/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
 
 
-# 1. install
+## Install
 
 > **npm install timeago-react**
 
 
-# 2. usage
+## Usage
 
-```js
+```jsx
 import React from 'react';
 import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
 <TimeAgo
   datetime={'2016-08-08 08:08:08'} 
-  locale='zh_CN' />
+  locale='zh_CN'
+/>
 ```
 
 
-# 3. component props
+## Component props
 
  - **`datetime`** (required, string / Date / timestamp)
 
-The datetime to be formated. can be `datetime string`, `Date instance`, or `timestamp`.
+The datetime to be formatted. can be `datetime string`, `Date instance`, or `timestamp`.
 
  - **`live`** (optional, boolean)
 
@@ -56,7 +61,7 @@ The datetime to be calculated interval relative to.
 
 The min interval to update the ** time ago string
 
-```js
+```jsx
 import React from 'react';
 import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
@@ -67,7 +72,8 @@ timeago.register('vi', require('timeago.js/locales/vi'));
 // then use it.
 <TimeAgo
   datetime={'2016-08-08 08:08:08'} 
-  locale='vi' />
+  locale='vi'
+/>
 ```
 
  - **`style`** (optional, object)
@@ -76,7 +82,8 @@ The `style` object to applied to the root element.
 
 Props not documented above are applied to the root element.
 
-# 4. LICENSE
+
+## LICENSE
 
 MIT
 
