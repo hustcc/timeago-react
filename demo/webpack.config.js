@@ -1,3 +1,4 @@
+/* eslint-disable */
 var path = require('path');
 
 module.exports = function (env = {}) {
@@ -7,7 +8,7 @@ module.exports = function (env = {}) {
     watch: !env.prod,
     entry: './demo/demo.tsx',
     output: {
-      path: path.resolve(__dirname, './demo/dist/'),
+      path: path.resolve(__dirname, 'dist'),
       filename: 'bundle.js',
     },
     resolve: {
@@ -22,7 +23,7 @@ module.exports = function (env = {}) {
             {
               loader: 'ts-loader',
               options: {
-                configFile: 'tsconfig.demo.json',
+                configFile: path.resolve(__dirname, './tsconfig.demo.json'),
               },
             },
           ],

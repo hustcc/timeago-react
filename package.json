@@ -17,8 +17,8 @@
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
     "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
-    "build-demos": "webpack --env.prod",
-    "start-demos": "webpack",
+    "build-demos": "webpack --env.prod --config ./demo/webpack.config.js",
+    "start-demos": "webpack --config ./demo/webpack.config.js",
     "prepublishOnly": "npm run build"
   },
   "repository": {

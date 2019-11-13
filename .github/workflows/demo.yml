@@ -1,0 +1,22 @@
+name: Build and Deploy Demo
+
+on:
+  push:	
+    branches:	
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Build and Deploy
+      uses: JamesIves/github-pages-deploy-action@releases/v2
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BASE_BRANCH: master # The branch the action should deploy from.
+        BRANCH: gh-pages # The branch the action should deploy to.
+        FOLDER: demo # The folder the action should deploy.
+        BUILD_SCRIPT: npm install && npm run-script build-demos # The build script the action should run prior to deploying.
