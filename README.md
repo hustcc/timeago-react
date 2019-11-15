@@ -11,7 +11,8 @@
  - Locales supported.
 
 [![npm](https://img.shields.io/npm/v/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
-[![Build Status](https://travis-ci.org/hustcc/timeago-react.svg?branch=master)](https://travis-ci.org/hustcc/timeago-react)
+[![build](https://github.com/hustcc/timeago-react/workflows/build/badge.svg)](https://github.com/hustcc/timeago-react)
+[![demo](https://github.com/hustcc/timeago-react/workflows/demo/badge.svg)](https://github.com/hustcc/timeago-react)
 [![npm](https://img.shields.io/npm/dm/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
 [![react supported](https://img.shields.io/badge/React-%5E0.14.0%20%7C%7C%20%5E15.0.0%20%7C%7C%20%5E16.0.0-blue.svg)](https://github.com/hustcc/timeago-react)
 [![npm](https://img.shields.io/npm/l/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
