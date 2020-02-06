@@ -1,7 +1,7 @@
 # timeago-react
 
 
-> timeago-react is a simple react component used to format date with `*** time ago` statement. eg: '3 hours ago'. 
+> timeago-react is a simple react component used to format date with `*** time ago` statement. eg: '3 hours ago'.
 
 **The component based on [timeago.js](https://github.com/hustcc/timeago.js)** which is a simple javascript module.
 
@@ -30,7 +30,7 @@ import React from 'react';
 import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
 <TimeAgo
-  datetime={'2016-08-08 08:08:08'} 
+  datetime={'2016-08-08 08:08:08'}
   locale='zh_CN'
 />
 ```
@@ -54,9 +54,9 @@ The `class` of span. you can setting the css style of span by class name.
 
 The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
 
- - **`opts.relativeDate`** (optional, string / Date / timestamp) 
+ - **`opts.relativeDate`** (optional, string / Date / timestamp)
 
-The datetime to be calculated interval relative to. 
+The datetime to be calculated interval relative to.
 
  - **`opts.minInterval`** (optional, number)
 
@@ -68,11 +68,14 @@ import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
 
 // import it first.
-timeago.register('vi', require('timeago.js/locales/vi'));
+import vi from 'timeago.js/lib/lang/vi';
+
+// register it.
+timeago.register('vi', vi);
 
 // then use it.
 <TimeAgo
-  datetime={'2016-08-08 08:08:08'} 
+  datetime={'2016-08-08 08:08:08'}
   locale='vi'
 />
 ```
