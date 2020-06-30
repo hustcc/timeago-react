@@ -58,9 +58,9 @@ The `locale` language of statement, default is `en`. All supported locales [here
 
 The datetime to be calculated interval relative to.
 
- - **`opts.minInterval`** (optional, number)
+ - **`opts.minInterval`** (optional, number in seconds)
 
-The min interval to update the ** time ago string
+The min interval in seconds to update the ** time ago string
 
 ```jsx
 import React from 'react';
