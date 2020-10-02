@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { register } from 'timeago.js';
 import TimeAgo from '../src/timeago-react';
 import AdSense from 'react-adsense';

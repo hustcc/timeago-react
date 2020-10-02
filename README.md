@@ -26,7 +26,7 @@
 ## Usage
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import TimeAgo from 'timeago-react'; // var TimeAgo = require('timeago-react');
 
 <TimeAgo
@@ -63,7 +63,7 @@ The datetime to be calculated interval relative to.
 The min interval in seconds to update the ** time ago string
 
 ```jsx
-import React from 'react';
+import * as React from 'react';
 import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
 
@@ -90,5 +90,3 @@ Props not documented above are applied to the root element.
 ## LICENSE
 
 MIT
-
-

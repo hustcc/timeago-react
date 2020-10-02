@@ -1,9 +1,9 @@
-import React from 'react';
+import * as React from 'react';
 import TimeAgo from '../src/timeago-react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { configure, mount } from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 
-Enzyme.configure({ adapter: new Adapter() });
+configure({ adapter: new Adapter() });
 
 const formatDate = (date: Date, fmt: string): string => {
   const o = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { format, cancel, render } from 'timeago.js';
 import { Opts, TDate } from 'timeago.js/lib/interface';
 export { Opts, TDate };
@@ -83,6 +83,7 @@ export default class TimeAgo extends React.Component<TimeAgoProps> {
 
   // for render
   render(): JSX.Element {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { datetime, live, locale, opts, ...others } = this.props;
     return (
       <time
