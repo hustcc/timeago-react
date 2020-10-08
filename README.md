@@ -52,7 +52,7 @@ The `class` of span. you can setting the css style of span by class name.
 
  - **`locale`** (optional, string)
 
-The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/locales). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
+The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/src/lang). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
 
  - **`opts.relativeDate`** (optional, string / Date / timestamp)
 
