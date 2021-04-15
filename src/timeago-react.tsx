@@ -36,8 +36,6 @@ export interface TimeAgoProps extends React.ComponentProps<'time'> {
   readonly live?: boolean; // real time render.
   readonly opts?: Opts;
   readonly locale?: string; // locale lang
-  readonly className?: string; // class name
-  readonly style?: React.CSSProperties; // style object
 }
 
 export default class TimeAgo extends React.Component<TimeAgoProps> {
