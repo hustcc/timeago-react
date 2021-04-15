@@ -31,7 +31,7 @@ const toDateTime = (input: TDate): string => {
   return '' + (input instanceof Date ? input.getTime() : input);
 };
 
-export interface TimeAgoProps {
+export interface TimeAgoProps extends React.ComponentProps<'time'> {
   readonly datetime: TDate; // date to be formatted
   readonly live?: boolean; // real time render.
   readonly opts?: Opts;
