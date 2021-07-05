@@ -50,10 +50,6 @@ Live render, default is `true`.
 
 The `class` of span. you can setting the css style of span by class name.
 
- - **`locale`** (optional, string)
-
-The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/src/lang). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
-
  - **`opts.relativeDate`** (optional, string / Date / timestamp)
 
 The datetime to be calculated interval relative to.
@@ -61,6 +57,10 @@ The datetime to be calculated interval relative to.
  - **`opts.minInterval`** (optional, number in seconds)
 
 The min interval in seconds to update the ** time ago string
+
+- **`locale`** (optional, string)
+
+The `locale` language of statement, default is `en`. All supported locales [here](https://github.com/hustcc/timeago.js/tree/master/src/lang). If you want to use locale which is not `zh_CN` / `en`, you should import the locale before use it. As below:
 
 ```jsx
 import * as React from 'react';
