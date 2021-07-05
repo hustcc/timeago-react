@@ -93,6 +93,22 @@ export default class TimeagoComponent extends React.Component {
             </pre>
           </div>
         </div>
+
+        <div className="examples">
+          <div className="parent">
+            <label>
+              6. The result is rendered as a `&lt;time&gt;` element. All attributes you can pass to `&lt;time&gt;` you
+              can also pass to `&lt;TimeAgo&gt;`:
+            </label>
+            <strong>
+              <TimeAgo datetime={'2019-11-15'} id="timeago" title="Nov 15, 2019" />
+            </strong>
+            <pre>
+              <code>{"<TimeAgo datetime={'2019-11-15'} id='timeago' title='Nov 15, 2019' />\n"}</code>
+            </pre>
+          </div>
+        </div>
+
         <h3>
           Download / Document on GitHub! <a href="https://github.com/hustcc/timeago-react">timeago-react</a>
         </h3>
