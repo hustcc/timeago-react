@@ -38,7 +38,7 @@ export interface TimeAgoProps extends React.ComponentProps<'time'> {
   readonly locale?: string; // locale lang
 }
 
-export default class TimeAgo extends React.Component<TimeAgoProps> {
+export default class TimeAgo extends React.PureComponent<TimeAgoProps> {
   static defaultProps = {
     live: true,
     className: '',
