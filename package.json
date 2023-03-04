@@ -5,6 +5,7 @@
   "main": "lib/timeago-react.js",
   "module": "esm/timeago-react.js",
   "files": [
+    "src",
     "lib",
     "esm"
   ],
