@@ -9,14 +9,19 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@master
-
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@releases/v2
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BASE_BRANCH: master # The branch the action should deploy from.
-        BRANCH: gh-pages # The branch the action should deploy to.
-        FOLDER: demo # The folder the action should deploy.
-        BUILD_SCRIPT: npm install && npm run-script build-demos # The build script the action should run prior to deploying.
+    - name: Checkout ${{ github.sha }}
+      uses: actions/checkout@v4
+    - name: Use Node.js lts/*
+      uses: actions/setup-node@v4
+      with:
+        node-version: lts/*
+        registry-url: https://registry.npmjs.org/
+    - name: Install dependencies
+      run: npm i
+    - name: Build
+      run: npm run build-demos
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./demo

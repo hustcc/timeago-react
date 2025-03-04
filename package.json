@@ -12,9 +12,9 @@
   "scripts": {
     "lint": "eslint src/**/* __tests__/**/*",
     "lint-staged": "lint-staged",
-    "test": "jest",
-    "ci": "npm run lint && npm run test && lint-md .",
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
+    "test": "vitest run",
+    "ci": "npm run lint && npm run coverage && lint-md .",
+    "coverage": "npm run test -- --coverage",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
     "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
@@ -43,38 +43,34 @@
   "homepage": "https://github.com/hustcc/timeago-react",
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
-    "@types/enzyme": "^3.10.3",
-    "@types/enzyme-adapter-react-16": "^1.0.5",
-    "@types/jest": "^24.0.19",
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^3.0.7",
     "coveralls": "^3.0.0",
     "cross-env": "^5.1.3",
     "css-loader": "^3.2.0",
-    "enzyme": "^3.10.0",
-    "enzyme-adapter-react-16": "^1.15.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-react": "^7.16.0",
     "file-loader": "^4.2.0",
     "husky": "^3.0.9",
-    "jest": "^24.9.0",
-    "jest-electron": "^0.1.7",
-    "jest-expect": "^0.0.1",
+    "jsdom": "^26.0.0",
     "lint-md-cli": "^0.1.1",
     "lint-staged": "^9.4.2",
     "prettier": "^1.18.2",
-    "react": "^16.11.0",
+    "react": "^19.0.0",
     "react-adsense": "^0.1.0",
-    "react-dom": "^16.11.0",
+    "react-dom": "^19.0.0",
     "rimraf": "^3.0.0",
     "style-loader": "^1.0.0",
-    "ts-jest": "^24.1.0",
     "ts-loader": "^6.2.1",
     "typescript": "^5.8.2",
     "url-loader": "^2.2.0",
+    "vitest": "^3.0.7",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
@@ -96,21 +92,5 @@
       "pre-commit": "npm run lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "jest": {
-    "preset": "ts-jest",
-    "globals": {
-      "ts-jest": {
-        "tsConfig": "tsconfig.ci.json"
-      }
-    },
-    "setupFilesAfterEnv": [
-      "jest-expect"
-    ],
-    "testRegex": "(/__tests__/.*(test|spec))\\.tsx?$",
-    "collectCoverage": true,
-    "collectCoverageFrom": [
-      "src/timeago-react.*"
-    ]
   }
 }

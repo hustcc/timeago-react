@@ -80,7 +80,7 @@ export default class TimeAgo extends React.PureComponent<TimeAgoProps> {
   }
 
   // for render
-  render(): JSX.Element {
+  render(): React.JSX.Element {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { datetime, live, locale, opts, ...others } = this.props;
     return (

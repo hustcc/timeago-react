@@ -7,7 +7,7 @@ import viLang from 'timeago.js/lib/lang/vi';
 register('vi', viLang);
 
 export default class TimeagoComponent extends React.Component {
-  render(): JSX.Element {
+  render(): React.JSX.Element {
     return (
       <div>
         <h1> timeago-react </h1>

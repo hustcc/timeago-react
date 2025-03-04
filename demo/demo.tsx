@@ -1,7 +1,7 @@
 import './demo.css';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import TimeagoComponent from './timeagoComponent';
 
-ReactDOM.render(<TimeagoComponent />, document.querySelector('#wrapper'));
+createRoot(document.querySelector('#wrapper')!).render(<TimeagoComponent />);
