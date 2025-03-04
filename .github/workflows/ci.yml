@@ -24,7 +24,7 @@ jobs:
       env:
         CI: true
     - name: coverall
-      if: success()
+      if: matrix.node-version == 'current'
       uses: coverallsapp/github-action@v2
       with:
         format: clover
