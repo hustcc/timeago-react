@@ -17,11 +17,11 @@ jobs:
         node-version: lts/*
         registry-url: https://registry.npmjs.org/
     - name: Install dependencies
-      run: npm i
+      run: npm ci
     - name: Build
-      run: npm run build-demos
+      run: npm run build --if-present
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./demo
+        publish_dir: ./packages/demo/dist

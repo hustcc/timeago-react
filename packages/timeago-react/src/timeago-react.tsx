@@ -31,14 +31,26 @@ const toDateTime = (input: TDate): string => {
   return '' + (input instanceof Date ? input.getTime() : input);
 };
 
-export interface TimeAgoProps extends React.ComponentProps<'time'> {
+// These ts-ignores are to import types from different React versions
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+export interface TimeAgoProps
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  extends React.ComponentProps<'time'>,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    React.HTMLProps<HTMLTimeElement> {
   readonly datetime: TDate; // date to be formatted
   readonly live?: boolean; // real time render.
   readonly opts?: Opts;
   readonly locale?: string; // locale lang
 }
 
-export default class TimeAgo extends React.PureComponent<TimeAgoProps> {
+export default class TimeAgo extends React.PureComponent<TimeAgoProps, unknown> {
   static defaultProps = {
     live: true,
     className: '',

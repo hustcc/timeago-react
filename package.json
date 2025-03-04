@@ -1,91 +1,21 @@
 {
-  "name": "timeago-react",
-  "version": "3.0.7",
-  "description": "timeago-react is a simple(only 1kb) react component used to format date with `*** time ago` statement. eg: '3 hours ago'.",
-  "main": "lib/timeago-react.js",
-  "module": "esm/timeago-react.js",
-  "files": [
-    "src",
-    "lib",
-    "esm"
+  "name": "timeago-react-workspace",
+  "private": true,
+  "workspaces": [
+    "packages/*"
   ],
   "scripts": {
-    "lint": "eslint src/**/* __tests__/**/*",
-    "lint-staged": "lint-staged",
-    "test": "vitest run",
-    "ci": "npm run lint && npm run coverage",
-    "coverage": "npm run test -- --coverage",
-    "build": "npm run build:cjs && npm run build:esm",
-    "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
-    "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
-    "build-demos": "webpack --env prod --config ./demo/webpack.config.js",
-    "start-demos": "webpack --config ./demo/webpack.config.js",
-    "prepublishOnly": "npm run build"
+    "start": "npm run start --workspace=demo",
+    "lint": "npm run lint --workspaces",
+    "build": "npm run build --workspace=timeago-react && npm run build --workspace=demo",
+    "test": "npm run test --workspaces"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/hustcc/timeago-react.git"
-  },
-  "keywords": [
-    "react",
-    "component",
-    "timeago-react",
-    "react-timeago",
-    "timeago.js",
-    "timeago",
-    "react-component"
-  ],
-  "author": "hustcc (http://github.com/hustcc)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/hustcc/timeago-react/issues"
-  },
-  "homepage": "https://github.com/hustcc/timeago-react",
   "devDependencies": {
-    "@commitlint/cli": "^19.7.1",
-    "@eslint/js": "^9.21.0",
-    "@testing-library/react": "^16.2.0",
-    "@types/react": "^19.0.10",
-    "@types/react-dom": "^19.0.4",
-    "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/coverage-v8": "^3.0.7",
-    "css-loader": "^7.1.2",
-    "eslint": "^9.21.0",
-    "eslint-plugin-prettier": "^5.2.3",
-    "eslint-plugin-react": "^7.37.4",
-    "file-loader": "^6.2.0",
-    "husky": "^9.1.7",
-    "jsdom": "^26.0.0",
-    "lint-staged": "^15.4.3",
-    "prettier": "^3.5.3",
-    "react": "^19.0.0",
-    "react-adsense": "^0.1.0",
-    "react-dom": "^19.0.0",
-    "rimraf": "^6.0.1",
-    "style-loader": "^4.0.0",
-    "ts-loader": "^9.5.2",
-    "typescript": "^5.8.2",
-    "typescript-eslint": "^8.26.0",
-    "url-loader": "^4.1.1",
-    "vitest": "^3.0.7",
-    "webpack": "^5.98.0",
-    "webpack-cli": "^6.0.1"
-  },
-  "dependencies": {
-    "timeago.js": "^4.0.0"
-  },
-  "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
-  },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
+    "husky": "^4.3.8"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint-staged",
+      "pre-commit": "npm run lint-staged --workspace=timeago-react",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }

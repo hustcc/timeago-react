@@ -1,32 +1,36 @@
-name: build 
+name: ci
 
 on: [push, pull_request]
 
 jobs:
-  build:
-
+  ci:
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
     strategy:
       matrix:
         node-version: [lts/*, current]
-
+    env:
+      CI: true
     steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install and test
-      run: |
-        npm install
-        npm run ci
-      env:
-        CI: true
-    - name: coverall
-      if: matrix.node-version == 'current'
-      uses: coverallsapp/github-action@v2
-      with:
-        format: clover
-        file: coverage/clover.xml
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Checkout ${{ github.sha }}
+        uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint --if-present
+      - name: Build
+        run: npm run build --if-present
+      - name: Test
+        run: npm run test --if-present
+      - name: Publish coverage
+        if: matrix.node-version == 'current'
+        uses: coverallsapp/github-action@v2
+        with:
+          format: clover
+          file: packages/timeago-react/coverage/clover.xml
+          github-token: ${{ secrets.GITHUB_TOKEN }}
