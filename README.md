@@ -1,6 +1,3 @@
-> **DEPRECATED. NO ISSUE, NO PR and NO UPDATE.** 
-
-
 # timeago-react
 
 
