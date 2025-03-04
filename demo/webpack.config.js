@@ -2,10 +2,11 @@
 var path = require('path');
 
 module.exports = function (env = {}) {
+  const isProd = env.prod ?? false;
   return {
-    mode: env.prod ? 'production' : 'development',
-    devtool: env.prod ? '' : 'cheap-module-eval-source-map',
-    watch: !env.prod,
+    mode: isProd ? 'production' : 'development',
+    devtool: isProd ? false : 'eval-cheap-module-source-map',
+    watch: !isProd,
     entry: './demo/demo.tsx',
     output: {
       path: path.resolve(__dirname, 'dist'),
@@ -30,11 +31,18 @@ module.exports = function (env = {}) {
         },
         {
           test: /\.css$/,
-          loader: 'style-loader!css-loader',
+          use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.(png|jpg)$/,
-          loader: 'url-loader?limit=512',
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 512,
+              },
+            },
+          ],
         },
       ],
     },

@@ -13,12 +13,12 @@
     "lint": "eslint src/**/* __tests__/**/*",
     "lint-staged": "lint-staged",
     "test": "vitest run",
-    "ci": "npm run lint && npm run coverage && lint-md .",
+    "ci": "npm run lint && npm run coverage",
     "coverage": "npm run test -- --coverage",
     "build": "npm run build:cjs && npm run build:esm",
     "build:cjs": "rimraf ./lib && tsc --module commonjs --outDir lib",
     "build:esm": "rimraf ./esm && tsc --module ESNext --outDir esm",
-    "build-demos": "webpack --env.prod --config ./demo/webpack.config.js",
+    "build-demos": "webpack --env prod --config ./demo/webpack.config.js",
     "start-demos": "webpack --config ./demo/webpack.config.js",
     "prepublishOnly": "npm run build"
   },
@@ -42,37 +42,34 @@
   },
   "homepage": "https://github.com/hustcc/timeago-react",
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
+    "@commitlint/cli": "^19.7.1",
+    "@eslint/js": "^9.21.0",
     "@testing-library/react": "^16.2.0",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@typescript-eslint/eslint-plugin": "^2.4.0",
-    "@typescript-eslint/parser": "^2.4.0",
     "@vitejs/plugin-react": "^4.3.4",
     "@vitest/coverage-v8": "^3.0.7",
-    "coveralls": "^3.0.0",
-    "cross-env": "^5.1.3",
-    "css-loader": "^3.2.0",
-    "eslint": "^6.5.1",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-react": "^7.16.0",
-    "file-loader": "^4.2.0",
-    "husky": "^3.0.9",
+    "css-loader": "^7.1.2",
+    "eslint": "^9.21.0",
+    "eslint-plugin-prettier": "^5.2.3",
+    "eslint-plugin-react": "^7.37.4",
+    "file-loader": "^6.2.0",
+    "husky": "^9.1.7",
     "jsdom": "^26.0.0",
-    "lint-md-cli": "^0.1.1",
-    "lint-staged": "^9.4.2",
-    "prettier": "^1.18.2",
+    "lint-staged": "^15.4.3",
+    "prettier": "^3.5.3",
     "react": "^19.0.0",
     "react-adsense": "^0.1.0",
     "react-dom": "^19.0.0",
-    "rimraf": "^3.0.0",
-    "style-loader": "^1.0.0",
-    "ts-loader": "^6.2.1",
+    "rimraf": "^6.0.1",
+    "style-loader": "^4.0.0",
+    "ts-loader": "^9.5.2",
     "typescript": "^5.8.2",
-    "url-loader": "^2.2.0",
+    "typescript-eslint": "^8.26.0",
+    "url-loader": "^4.1.1",
     "vitest": "^3.0.7",
-    "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
   },
   "dependencies": {
     "timeago.js": "^4.0.0"
@@ -81,10 +78,9 @@
     "react": "^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "lint-staged": {
-    "*.{ts,tsx}": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "husky": {
