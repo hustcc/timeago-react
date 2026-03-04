@@ -3,12 +3,11 @@
 
 > timeago-react is a simple react component used to format date with `*** time ago` statement. eg: '3 hours ago'.
 
-**The component based on [timeago.js](https://github.com/hustcc/timeago.js)** which is a simple javascript module.
+**Now uses native-time-ago** - a zero-dependency library using the native Intl.RelativeTimeFormat API.
 
- - Realtime render. Automatic release the resources.
- - Simple. Only 2kb.
- - Efficient. When the time is `3 hour ago`, the interval will an hour (3600 * 1000 ms).
- - Locales supported.
+ - Zero dependencies (uses native Intl.RelativeTimeFormat API)
+ - Supports 100+ languages automatically via native browser API
+ - No locale files needed
 
 [![npm](https://img.shields.io/npm/v/timeago-react.svg)](https://www.npmjs.com/package/timeago-react)
 [![build](https://github.com/hustcc/timeago-react/workflows/ci/badge.svg)](https://github.com/hustcc/timeago-react)

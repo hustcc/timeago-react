@@ -1,71 +1,27 @@
 import * as React from 'react';
-import { format, cancel, render } from 'timeago.js';
-import { Opts, TDate } from 'timeago.js/lib/interface';
-export { Opts, TDate };
+import timeAgo from 'native-time-ago';
 
-/**
- * Convert input to a valid datetime string of <time> tag
- * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time
- * @param input
- * @returns datetime string
- */
-const toDateTime = (input: TDate): string => {
-  // let date: Date = new Date();
-  // if (input instanceof Date) {
-  //   date = input;
-  //   //@ts-ignore
-  // } else if (!isNaN(input) || /^\d+$/.test(input)) {
-  //   //@ts-ignore
-  //   date = new Date(parseInt(input));
-  // } else {
-  //   date = new Date(input);
-  // }
-
-  // try {
-  //   return date.toISOString();
-  // } catch (e) {
-  //   console.error('invalid datetime');
-  //   return '';
-  // }
-
+const toDateTime = (input: any): string => {
   return '' + (input instanceof Date ? input.getTime() : input);
 };
 
-// These ts-ignores are to import types from different React versions
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-export interface TimeAgoProps
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  extends React.ComponentProps<'time'>,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    React.HTMLProps<HTMLTimeElement> {
-  readonly datetime: TDate; // date to be formatted
-  readonly live?: boolean; // real time render.
-  readonly opts?: Opts;
-  readonly locale?: string; // locale lang
+export interface TimeAgoProps extends React.HTMLAttributes<HTMLTimeElement> {
+  readonly datetime: any;
+  readonly live?: boolean;
+  readonly opts?: any; // Not supported in native-time-ago
+  readonly locale?: string;
 }
 
 export default class TimeAgo extends React.PureComponent<TimeAgoProps, unknown> {
   static defaultProps = {
-    live: true,
+    live: false,
     className: '',
   };
 
   dom: HTMLTimeElement = null;
+  intervalId: ReturnType<typeof setInterval> = null;
 
   componentDidMount(): void {
-    // fixed #6 https://github.com/hustcc/timeago-react/issues/6
-    // to reduce the file size.
-    // const { locale } = this.props;
-    // if (locale !== 'en' && locale !== 'zh_CN') {
-    //   timeago.register(locale, require('timeago.js/locales/' + locale));
-    // }
-    // render it.
     this.renderTimeAgo();
   }
 
@@ -74,26 +30,31 @@ export default class TimeAgo extends React.PureComponent<TimeAgoProps, unknown> 
   }
 
   renderTimeAgo(): void {
-    const { live, datetime, locale, opts } = this.props;
-    // cancel all the interval
-    cancel(this.dom);
-    // if is live
+    const { live, datetime, locale } = this.props;
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
     if (live !== false) {
-      // live render
       this.dom.setAttribute('datetime', toDateTime(datetime));
-
-      render(this.dom, locale, opts);
+      const update = () => {
+        if (this.dom) {
+          this.dom.textContent = timeAgo(datetime, locale || 'en');
+        }
+      };
+      update();
+      this.intervalId = setInterval(update, 60000);
     }
   }
 
-  // remove
   componentWillUnmount(): void {
-    cancel(this.dom);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
   }
 
-  // for render
   render(): React.JSX.Element {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { datetime, live, locale, opts, ...others } = this.props;
     return (
       <time
@@ -102,7 +63,7 @@ export default class TimeAgo extends React.PureComponent<TimeAgoProps, unknown> 
         }}
         {...others}
       >
-        {format(datetime, locale, opts)}
+        {timeAgo(datetime, locale || 'en')}
       </time>
     );
   }
